@@ -1,5 +1,8 @@
 from fastapi import FastAPI
-from contextlib import asynccontextmanager
+from enum import Enum
+from contextlib import asynccontextmanager 
+from backend.users.router import user_router 
+from backend.auth.router import auth_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI): 
@@ -7,8 +10,8 @@ async def lifespan(app: FastAPI):
     yield
     print("Shutting down FastAPI application")
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(lifespan=lifespan) 
+app.include_router(user_router)  
+app.include_router(auth_router)
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+
