@@ -5,5 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "decouple>=0.0.7",
     "fastapi[standard]>=0.115.12",
+    "supabase>=2.15.2",
 ]
